@@ -237,3 +237,6 @@ Al hacer push a `main`, GitHub Actions:
 5. Corré `python manage.py test catalogo.tests.test_queries`
 6. Hacé commits significativos durante todo el proceso
 7. Push a `main` y verificá GitHub → **Actions**
+
+
+//probando q pueda hacer commits y push
