@@ -36,43 +36,27 @@ class Libro(models.Model):
     Tiene relación N:1 con Autor y N:M con Categoria.
     """
 
-    # TODO: implementar los campos:
-    # titulo          → CharField
-    # isbn            → CharField (unique=True)
-    # fecha_publicacion → DateField
-    # cantidad_total  → PositiveIntegerField
-    # autor           → ForeignKey(Autor, on_delete=models.PROTECT)
-    # categorias      → ManyToManyField(Categoria)
-    #
-    # Preguntas guía:
-    # ¿Qué pasa si eliminás un autor que tiene libros? (PROTECT vs CASCADE)
-    # ¿Por qué isbn debe ser único?
+    titulo = models.CharField(max_length=300)
+    isbn = models.CharField(max_length=20, unique=True)
+    fecha_publicacion = models.DateField()
+    cantidad_total = models.PositiveIntegerField()
+    autor = models.ForeignKey(Autor, on_delete=models.PROTECT)
+    categorias = models.ManyToManyField(Categoria)
 
-    pass
+    def __str__(self) -> str:
+        return self.titulo
 
     def prestamos_activos(self) -> int:
-        """
-        Retorna la cantidad de préstamos activos (fecha_devolucion IS NULL).
-
-        Un préstamo es "activo" cuando no se ha registrado devolución.
-        """
-        # TODO: implementar con ORM usando filter sobre los préstamos relacionados
-        # Pista: self.prestamo_set.filter(fecha_devolucion__isnull=True).count()
-        #        (o el related_name que hayas definido en Prestamo.libro)
-        raise NotImplementedError
+        """Retorna la cantidad de préstamos activos (fecha_devolucion IS NULL)."""
+        return self.prestamo_set.filter(fecha_devolucion__isnull=True).count()
 
     def disponibles(self) -> int:
-        """
-        Retorna cuántas copias están disponibles:
-        cantidad_total - prestamos_activos()
-        """
-        # TODO: implementar
-        raise NotImplementedError
+        """Retorna cuántas copias están disponibles: cantidad_total - prestamos_activos()."""
+        return self.cantidad_total - self.prestamos_activos()
 
     def tiene_disponibles(self) -> bool:
         """Retorna True si hay al menos una copia disponible."""
-        # TODO: implementar
-        raise NotImplementedError
+        return self.disponibles() > 0
 
 
 class Prestamo(models.Model):
