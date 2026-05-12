@@ -1,3 +1,5 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/mZttlvBE)
+[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=23840175)
 # TP 4 · Introducción a Django ORM y Persistencia
 
 **Stack**: Python 3.13+, Django 5.1+, SQLite, Django ORM, Django `unittest`, Git/GitHub Classroom  
@@ -235,3 +237,6 @@ Al hacer push a `main`, GitHub Actions:
 5. Corré `python manage.py test catalogo.tests.test_queries`
 6. Hacé commits significativos durante todo el proceso
 7. Push a `main` y verificá GitHub → **Actions**
+
+
+//probando q pueda hacer commits y push v2
