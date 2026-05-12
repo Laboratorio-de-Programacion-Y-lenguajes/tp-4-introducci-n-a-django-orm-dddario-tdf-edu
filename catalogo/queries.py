@@ -25,18 +25,5 @@ def libros_sin_disponibilidad():
 
 
 def top_n_libros_mas_prestados(n: int):
-    """
-    Devuelve los N libros con más préstamos (en total, sin importar si están activos).
-
-    Args:
-        n: cantidad de libros a retornar
-
-    Returns:
-        QuerySet[Libro] con hasta n elementos, ordenados de más a menos prestados.
-
-    Pista:
-        Libro.objects.annotate(total_prestamos=Count("prestamo"))
-                     .order_by("-total_prestamos")[:n]
-    """
-    # TODO: implementar con annotate + order_by + slicing
-    raise NotImplementedError
+    """Devuelve los N libros con más préstamos totales, ordenados de más a menos."""
+    return Libro.objects.annotate(total_prestamos=Count("prestamo")).order_by("-total_prestamos")[:n]
