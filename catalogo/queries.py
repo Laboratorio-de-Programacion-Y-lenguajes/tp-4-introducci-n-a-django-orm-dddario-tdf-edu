@@ -6,24 +6,9 @@ from .models import Autor, Libro
 
 
 def libros_por_categoria(nombre_categoria: str):
-    """
-    Devuelve un QuerySet de Libros que pertenecen a la categoría indicada.
+    """Devuelve un QuerySet de Libros que pertenecen a la categoría indicada."""
+    return Libro.objects.filter(categorias__nombre=nombre_categoria)
 
-    Args:
-        nombre_categoria: nombre exacto de la categoría (ej: "fantasía")
-
-    Returns:
-        QuerySet[Libro]
-
-    Ejemplo de uso:
-        libros = libros_por_categoria("fantasía")
-        for libro in libros:
-            print(libro.titulo)
-    """
-    # TODO: implementar la consulta ORM
-    # Pista: usá filter con la relación M2M
-    #   Libro.objects.filter(categorias__nombre=nombre_categoria)
-    raise NotImplementedError
 
 
 def autores_con_mas_de_n_libros(n: int):
